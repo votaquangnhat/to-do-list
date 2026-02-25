@@ -3,7 +3,7 @@ import os
 import sqlite3
 
 app = Flask(__name__)
-VERSION = "v0.1"
+VERSION = "v0.1.1"
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATABASE_PATH = os.path.join(BASE_DIR, 'tasks.db')
@@ -61,6 +61,8 @@ def delete_task(task_id):
         connection.close()
         return "", 204
 
+
+init_db()
+
 if __name__ == '__main__':
-    init_db()
     app.run(debug=True)
