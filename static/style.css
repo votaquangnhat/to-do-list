@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    margin-top: 60px;
+    background: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    width: 450px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="text"],
+input[type="date"] {
+    flex: 1;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+}
+
+button {
+    padding: 8px 14px;
+    border-radius: 6px;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    background: #f9fafb;
+    border: 1px solid #eee;
+    transition: background 0.2s ease;
+}
+
+.task-item:hover {
+    background: #f1f3f6;
+}
+
+.task-left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.due-date {
+    font-size: 0.85em;
+    color: #888;
+}

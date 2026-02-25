@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>To Do List {{ version }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const checkboxes = document.getElementsByClassName('task');
+
+            for (let checkbox of checkboxes) {
+                checkbox.addEventListener('change', function() {
+                    if (this.checked) {
+                        this.parentElement.style.textDecoration = 'line-through';
+                        const taskId = this.parentElement.parentElement.getAttribute('data-id');
+                        fetch(`/delete/${taskId}`, {
+                            method: 'DELETE'
+                        })
+                        .then(response => {
+                            if (response.status === 500) {
+                                alert('Error deleting task. Please try again.');
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+<div class="container">
+    <h1>My To Do List {{ version }}</h1>
+
+    <form action="/add" method="POST">
+        <input type="text" name="content" placeholder="New task..." required>
+        <input type="date" name="due_date" required>
+        <button type="submit">Add</button>
+    </form>
+
+    {% if tasks %}
+        {% for task in tasks %}
+        <div class="task-item" data-id="{{ task[0] }}">
+            <div class="task-left">
+                <input type="checkbox" class="task" {% if task[3] %}checked{% endif %}>
+                <span>{{ task[1] }}</span>
+            </div>
+            <span class="due-date">Due: {{ task[2] }}</span>
+        </div>
+        {% endfor %}
+    {% endif %}
+</div>
+</body>
+</html>
