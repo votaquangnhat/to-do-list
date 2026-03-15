@@ -28,3 +28,9 @@ python main.py
 - **Backend:** Flask
 - **Database:** SQLite
 - **Frontend:** HTML/CSS
+
+
+## Version notes
+
+- v0.1.1: first 
+- v0.1.2: add CI/CD
